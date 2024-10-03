@@ -1868,7 +1868,7 @@ spec:
       serviceAccountName: "default"
       containers:
         - name: etcd
-          image: docker.io/milvusdb/etcd:3.5.14-r3
+          image: docker.io/milvusdb/etcd:3.5.14-r1
           imagePullPolicy: "IfNotPresent"
           securityContext:
             capabilities:
@@ -2016,7 +2016,7 @@ spec:
         allowPrivilegeEscalation: false
       containers:
         - name: minio
-          image: minio/minio:RELEASE.2024-09-22T00-33-43Z
+          image: minio/minio:RELEASE.2023-03-20T20-16-18Z
           imagePullPolicy: IfNotPresent
           command: ["/bin/sh", "-ce", "/usr/bin/docker-entrypoint.sh minio -S /etc/minio/certs/ server  http://vectordb-minio-{0...3}.vectordb-minio-svc.milvus.svc.cluster.local/export"]
           volumeMounts:
@@ -2138,7 +2138,7 @@ spec:
         # This initContainer will wait for bookkeeper initnewcluster to complete
         # before deploying the bookies
         - name: pulsar-bookkeeper-verify-clusterid
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           command: ["sh", "-c"]
           args:
@@ -2156,7 +2156,7 @@ spec:
           volumeMounts:
       containers:
         - name: "vectordb-pulsar-recovery"
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           resources:
             requests:
@@ -2237,7 +2237,7 @@ spec:
         # This initContainer will wait for bookkeeper initnewcluster to complete
         # before deploying the bookies
         - name: pulsar-bookkeeper-verify-clusterid
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           command: ["sh", "-c"]
           args:
@@ -2256,7 +2256,7 @@ spec:
           volumeMounts:
       containers:
         - name: "vectordb-pulsar-bookie"
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -2375,7 +2375,7 @@ spec:
         # This init container will wait for zookeeper to be ready before
         # deploying the bookies
         - name: wait-zookeeper-ready
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           command: ["sh", "-c"]
           args:
@@ -2390,7 +2390,7 @@ spec:
         # This init container will wait for bookkeeper to be ready before
         # deploying the broker
         - name: wait-bookkeeper-ready
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           command: ["sh", "-c"]
           args:
@@ -2416,7 +2416,7 @@ spec:
           volumeMounts:
       containers:
         - name: "vectordb-pulsar-broker"
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -2523,7 +2523,7 @@ spec:
         # This init container will wait for zookeeper to be ready before
         # deploying the bookies
         - name: wait-zookeeper-ready
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           command: ["sh", "-c"]
           args:
@@ -2537,7 +2537,7 @@ spec:
         # This init container will wait for at least one broker to be ready before
         # deploying the proxy
         - name: wait-broker-ready
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           command: ["sh", "-c"]
           args:
@@ -2552,7 +2552,7 @@ spec:
               done;
       containers:
         - name: "vectordb-pulsar-proxy"
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           livenessProbe:
             httpGet:
@@ -2647,7 +2647,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
         - name: "vectordb-pulsar-zookeeper"
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           resources:
             requests:
@@ -2741,7 +2741,7 @@ spec:
     spec:
       initContainers:
         - name: wait-zookeeper-ready
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           command: ["sh", "-c"]
           args:
@@ -2754,7 +2754,7 @@ spec:
               done;
       containers:
         - name: "vectordb-pulsar-bookie-init"
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           command: ["sh", "-c"]
           args:
@@ -2816,7 +2816,7 @@ spec:
     spec:
       initContainers:
         - name: wait-zookeeper-ready
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           command: ["sh", "-c"]
           args:
@@ -2830,7 +2830,7 @@ spec:
         # This initContainer will wait for bookkeeper initnewcluster to complete
         # before initializing pulsar metadata
         - name: pulsar-bookkeeper-verify-clusterid
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           command: ["sh", "-c"]
           args:
@@ -2850,7 +2850,7 @@ spec:
           volumeMounts:
       containers:
         - name: "vectordb-pulsar-pulsar-init"
-          image: "apachepulsar/pulsar:3.3.1"
+          image: "apachepulsar/pulsar:2.10.6"
           imagePullPolicy: IfNotPresent
           command: ["sh", "-c"]
           args:

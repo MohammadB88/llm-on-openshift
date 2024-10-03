@@ -462,7 +462,7 @@ minio:
   name: minio
   mode: distributed
   image:
-    tag: "RELEASE.2024-09-22T00-33-43Z"
+    tag: "RELEASE.2023-03-20T20-16-18Z"
     pullPolicy: IfNotPresent
   accessKey: minioadmin
   secretKey: minioadmin
@@ -532,7 +532,7 @@ etcd:
     create: false
   image:
     repository: "milvusdb/etcd"
-    tag: "3.5.14-r3"
+    tag: "3.5.14-r1"
     pullPolicy: IfNotPresent
 
   service:
@@ -774,7 +774,7 @@ pulsar:
     image:
       # the image used for running `pulsar-cluster-initialize` job
       repository: apachepulsar/pulsar
-      tag: 3.3.1
+      tag: 2.10.6
 
 
 ## Configuration values for the kafka dependency
