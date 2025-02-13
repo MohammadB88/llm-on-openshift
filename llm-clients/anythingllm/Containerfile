@@ -137,6 +137,9 @@ COPY --chown=1001:0 nginx/api/ /opt/app-root/api/
 # Install AnythingLLM #
 #######################
 
+# Install Puppeteer
+RUN npm install puppeteer --prefix /app/collector
+
 COPY --chown=1001:0 --from=anythingllm /app /app
 RUN chmod -R g+rw /app && \
     chown -R 1001:0 /app && \
